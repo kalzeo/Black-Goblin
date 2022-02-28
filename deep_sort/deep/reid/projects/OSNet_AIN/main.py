@@ -6,8 +6,8 @@ import argparse
 import torch
 import torch.nn as nn
 
-import torchreid
-from torchreid.utils import (
+import deep_sort.deep.reid.torchreid as torchreid
+from deep_sort.deep.reid.torchreid.utils import (
     Logger, check_isfile, set_random_seed, collect_env_info,
     resume_from_checkpoint, compute_model_complexity
 )

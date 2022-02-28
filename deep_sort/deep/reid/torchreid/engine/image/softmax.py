@@ -1,7 +1,7 @@
 from __future__ import division, print_function, absolute_import
 
-from torchreid import metrics
-from torchreid.losses import CrossEntropyLoss
+from deep_sort.deep.reid.torchreid.metrics import accuracy
+from deep_sort.deep.reid.torchreid.losses import CrossEntropyLoss
 
 from ..engine import Engine
 
@@ -91,7 +91,7 @@ class ImageSoftmaxEngine(Engine):
 
         loss_summary = {
             'loss': loss.item(),
-            'acc': metrics.accuracy(outputs, pids)[0].item()
+            'acc': accuracy(outputs, pids)[0].item()
         }
 
         return loss_summary

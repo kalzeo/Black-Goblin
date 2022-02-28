@@ -4,7 +4,7 @@ import numpy as np
 import timeit
 import os.path as osp
 
-from torchreid import metrics
+from deep_sort.deep.reid.torchreid.metrics.rank import evaluate_rank
 
 sys.path.insert(0, osp.dirname(osp.abspath(__file__)) + '/../../..')
 """
@@ -24,7 +24,7 @@ import sys
 import os.path as osp
 import numpy as np
 sys.path.insert(0, osp.dirname(osp.abspath(__file__)) + '/../../..')
-from torchreid import metrics
+from deep_sort.deep.reid.torchreid.metrics.rank import evaluate_rank
 num_q = 30
 num_g = 300
 max_rank = 5
@@ -37,12 +37,12 @@ g_camids = np.random.randint(0, 5, size=num_g)
 
 print('=> Using market1501\'s metric')
 pytime = timeit.timeit(
-    'metrics.evaluate_rank(distmat, q_pids, g_pids, q_camids, g_camids, max_rank, use_cython=False)',
+    'evaluate_rank(distmat, q_pids, g_pids, q_camids, g_camids, max_rank, use_cython=False)',
     setup=setup,
     number=20
 )
 cytime = timeit.timeit(
-    'metrics.evaluate_rank(distmat, q_pids, g_pids, q_camids, g_camids, max_rank, use_cython=True)',
+    'evaluate_rank(distmat, q_pids, g_pids, q_camids, g_camids, max_rank, use_cython=True)',
     setup=setup,
     number=20
 )
@@ -52,12 +52,12 @@ print('Cython is {} times faster than python\n'.format(pytime / cytime))
 
 print('=> Using cuhk03\'s metric')
 pytime = timeit.timeit(
-    'metrics.evaluate_rank(distmat, q_pids, g_pids, q_camids, g_camids, max_rank, use_metric_cuhk03=True, use_cython=False)',
+    'evaluate_rank(distmat, q_pids, g_pids, q_camids, g_camids, max_rank, use_metric_cuhk03=True, use_cython=False)',
     setup=setup,
     number=20
 )
 cytime = timeit.timeit(
-    'metrics.evaluate_rank(distmat, q_pids, g_pids, q_camids, g_camids, max_rank, use_metric_cuhk03=True, use_cython=True)',
+    'evaluate_rank(distmat, q_pids, g_pids, q_camids, g_camids, max_rank, use_metric_cuhk03=True, use_cython=True)',
     setup=setup,
     number=20
 )

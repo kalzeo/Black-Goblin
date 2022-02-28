@@ -12,8 +12,8 @@ import cv2
 import torch
 from torch.nn import functional as F
 
-import torchreid
-from torchreid.utils import (
+import deep_sort.deep.reid.torchreid as torchreid
+from deep_sort.deep.reid.torchreid.utils import (
     check_isfile, mkdir_if_missing, load_pretrained_weights
 )
 

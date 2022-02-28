@@ -1,8 +1,8 @@
 from __future__ import division, print_function, absolute_import
 
-from torchreid import metrics
-from torchreid.engine import Engine
-from torchreid.losses import CrossEntropyLoss
+from deep_sort.deep.reid.torchreid.metrics import accuracy
+from deep_sort.deep.reid.torchreid.engine import Engine
+from deep_sort.deep.reid.torchreid.losses import CrossEntropyLoss
 
 
 class ImageSoftmaxNASEngine(Engine):
@@ -67,7 +67,7 @@ class ImageSoftmaxNASEngine(Engine):
 
         loss_dict = {
             'loss': loss.item(),
-            'acc': metrics.accuracy(outputs, pids)[0].item()
+            'acc': accuracy(outputs, pids)[0].item()
         }
 
         return loss_dict

@@ -8,12 +8,9 @@ import torch
 from torch.nn import functional as F
 from torch.utils.tensorboard import SummaryWriter
 
-from torchreid import metrics
-from torchreid.utils import (
-    MetricMeter, AverageMeter, re_ranking, open_all_layers, save_checkpoint,
-    open_specified_layers, visualize_ranked_results
-)
-from torchreid.losses import DeepSupervision
+from deep_sort.deep.reid.torchreid.metrics import evaluate_rank, compute_distance_matrix
+from deep_sort.deep.reid.torchreid.utils import MetricMeter, AverageMeter, re_ranking, open_all_layers, save_checkpoint, open_specified_layers, visualize_ranked_results
+from deep_sort.deep.reid.torchreid.losses import DeepSupervision
 
 
 class Engine(object):
@@ -394,17 +391,17 @@ class Engine(object):
         print(
             'Computing distance matrix with metric={} ...'.format(dist_metric)
         )
-        distmat = metrics.compute_distance_matrix(qf, gf, dist_metric)
+        distmat = compute_distance_matrix(qf, gf, dist_metric)
         distmat = distmat.numpy()
 
         if rerank:
             print('Applying person re-ranking ...')
-            distmat_qq = metrics.compute_distance_matrix(qf, qf, dist_metric)
-            distmat_gg = metrics.compute_distance_matrix(gf, gf, dist_metric)
+            distmat_qq = compute_distance_matrix(qf, qf, dist_metric)
+            distmat_gg = compute_distance_matrix(gf, gf, dist_metric)
             distmat = re_ranking(distmat, distmat_qq, distmat_gg)
 
         print('Computing CMC and mAP ...')
-        cmc, mAP = metrics.evaluate_rank(
+        cmc, mAP = evaluate_rank(
             distmat,
             q_pids,
             g_pids,

@@ -167,7 +167,7 @@ def detect(opt):
                 p, im0, _ = path, im0s.copy(), getattr(dataset, 'frame', 0)
 
             p = Path(p)  # to Path
-            save_path = str(save_dir / p.name)  # im.jpg, vid.mp4, ...
+            save_path = save_dir / p.name  # im.jpg, vid.mp4, ...
             s += '%gx%g ' % img.shape[2:]
 
             annotator = Annotator(im0, line_width=2, pil=not ascii)
@@ -230,8 +230,8 @@ def detect(opt):
 
             # Save results (image with detections)
             if save_vid:
-                if vid_path != save_path:  # new video
-                    vid_path = save_path
+                if vid_path != save_path.as_posix():  # new video
+                    vid_path = save_path.as_posix()
                     if isinstance(vid_writer, cv2.VideoWriter):
                         vid_writer.release()  # release previous video writer
                     if vid_cap:  # video
@@ -241,7 +241,7 @@ def detect(opt):
                     else:  # stream
                         fps, w, h = 30, im0.shape[1], im0.shape[0]
 
-                    vid_writer = cv2.VideoWriter(save_path, cv2.VideoWriter_fourcc(*'mp4v'), fps, (w, h))
+                    vid_writer = cv2.VideoWriter(save_path.as_posix(), cv2.VideoWriter_fourcc(*'mp4v'), fps, (w, h))
                 vid_writer.write(im0)
 
     ll.ll2csv(df, csv_path)
@@ -252,16 +252,16 @@ def detect(opt):
         per image at shape {(1, 3, *imgsz)}' % t)
 
     if save_csv or save_vid:
-        print(f'Results saved to {save_path}')
+        print(f'Results saved to {save_path.parent.as_posix()}')
         if platform == 'darwin':  # MacOS
-            os.system(f'open {save_path}')
+            os.system(f'open {save_path.parent.as_posix()}')
 
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-    parser.add_argument('--yolo_model', nargs='+', type=str, default='yolov5m.pt', help='model.pt path(s)')
+    parser.add_argument('--yolo_model', nargs='+', type=str, default='yolov5m.pt', help='model.pt path(s)', required=True)
     parser.add_argument('--deep_sort_model', type=str, default='osnet_x0_25')
-    parser.add_argument('--source', type=str, default='0', help='source')  # file/folder, 0 for webcam
+    parser.add_argument('--source', type=str, help='source', required=True)  # path to video, 0 for webcam
     parser.add_argument('--output', type=str, default='inference/output', help='output folder')  # output folder
     parser.add_argument('--imgsz', '--img', '--img-size', nargs='+', type=int, default=[288, 288], help='inference size h,w')
     parser.add_argument('--conf-thres', type=float, default=0.2, help='object confidence threshold')
@@ -281,8 +281,8 @@ if __name__ == '__main__':
     parser.add_argument('--visualize', action='store_true', help='visualize features')
     parser.add_argument('--max-det', type=int, default=1000, help='maximum detection per image')
     parser.add_argument('--dnn', action='store_true', help='use OpenCV DNN for ONNX inference')
-    parser.add_argument('--project', default=ROOT / 'runs/track', help='save results to project/name')
-    parser.add_argument('--name', default='exp', help='save results to project/name')
+    parser.add_argument('--project', help='save results to project/name', required=True)
+    parser.add_argument('--name', default='exp', help='save results to project/name', required=True)
     parser.add_argument('--exist-ok', default=True, action='store_true', help='existing project/name ok, do not increment')
     opt = parser.parse_args()
     opt.imgsz *= 2 if len(opt.imgsz) == 1 else 1  # expand

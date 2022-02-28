@@ -9,13 +9,13 @@ import warnings
 import torch
 import torch.nn as nn
 
-import torchreid
-from torchreid.utils import (
+import deep_sort.deep.reid.torchreid as torchreid
+from deep_sort.deep.reid.torchreid.utils import (
     Logger, AverageMeter, check_isfile, open_all_layers, save_checkpoint,
     set_random_seed, collect_env_info, open_specified_layers,
     load_pretrained_weights, compute_model_complexity
 )
-from torchreid.data.transforms import (
+from deep_sort.deep.reid.torchreid.data.transforms import (
     Resize, Compose, ToTensor, Normalize, Random2DTranslation,
     RandomHorizontalFlip
 )

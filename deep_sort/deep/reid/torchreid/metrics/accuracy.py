@@ -15,8 +15,8 @@ def accuracy(output, target, topk=(1, )):
         list: accuracy at top-k.
 
     Examples::
-        >>> from torchreid import metrics
-        >>> metrics.accuracy(output, target)
+        >>> from deep_sort.deep.reid.torchreid.metrics import accuracy
+        >>> accuracy(output, target)
     """
     maxk = max(topk)
     batch_size = target.size(0)

@@ -1,7 +1,7 @@
 from __future__ import division, print_function, absolute_import
 
-from torchreid import metrics
-from torchreid.losses import TripletLoss, CrossEntropyLoss
+from deep_sort.deep.reid.torchreid.metrics import accuracy
+from deep_sort.deep.reid.torchreid.losses import TripletLoss, CrossEntropyLoss
 
 from ..engine import Engine
 
@@ -111,7 +111,7 @@ class ImageTripletEngine(Engine):
             loss_x = self.compute_loss(self.criterion_x, outputs, pids)
             loss += self.weight_x * loss_x
             loss_summary['loss_x'] = loss_x.item()
-            loss_summary['acc'] = metrics.accuracy(outputs, pids)[0].item()
+            loss_summary['acc'] = accuracy(outputs, pids)[0].item()
 
         assert loss_summary
 

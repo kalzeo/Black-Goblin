@@ -13,7 +13,7 @@ $ python compute_mean_std.py $DATA market1501
 """
 import argparse
 
-import torchreid
+import deep_sort.deep.reid.torchreid as torchreid
 
 
 def main():

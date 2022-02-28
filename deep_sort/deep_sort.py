@@ -7,7 +7,7 @@ from .sort.detection import Detection
 from .sort.tracker import Tracker
 
 sys.path.append('deep_sort/deep/reid')
-from torchreid.utils import FeatureExtractor
+from deep_sort.deep.reid.torchreid.utils import FeatureExtractor
 
 __all__ = ['DeepSort']
 
@@ -23,10 +23,9 @@ class DeepSort(object):
         max_cosine_distance = max_dist
         metric = NearestNeighborDistanceMetric(
             "cosine", max_cosine_distance, nn_budget)
-        self.tracker = Tracker(
-            metric, max_iou_distance=max_iou_distance, max_age=max_age, n_init=n_init)
+        self.tracker = Tracker(metric, max_iou_distance=max_iou_distance, max_age=max_age, n_init=n_init)
 
-    def update(self, bbox_xywh, confidences, classes, ori_img, use_yolo_preds=False):
+    def update(self, bbox_xywh, confidences, classes, ori_img, use_yolo_preds=True):
         self.height, self.width = ori_img.shape[:2]
         # generate detections
         features = self._get_features(bbox_xywh, ori_img)
