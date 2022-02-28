@@ -1,10 +1,11 @@
 from __future__ import division, print_function, absolute_import
+
 import numpy as np
 import warnings
 from collections import defaultdict
 
 try:
-    from torchreid.metrics.rank_cylib.rank_cy import evaluate_cy
+    from deep_sort.deep.reid.torchreid.metrics.rank_cylib.rank_cy import evaluate_cy
     IS_CYTHON_AVAI = True
 except ImportError:
     IS_CYTHON_AVAI = False
@@ -12,6 +13,8 @@ except ImportError:
         'Cython evaluation (very fast so highly recommended) is '
         'unavailable, now use python evaluation.'
     )
+
+print(f"Using Cython Evaluation: {IS_CYTHON_AVAI}\n")
 
 
 def eval_cuhk03(distmat, q_pids, g_pids, q_camids, g_camids, max_rank):

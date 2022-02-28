@@ -67,7 +67,6 @@
     <li>
       <a href="#getting-started">Getting Started</a>
       <ul>
-        <li><a href="#prerequisites">Prerequisites</a></li>
         <li><a href="#installation">Installation</a></li>
       </ul>
     </li>
@@ -96,32 +95,20 @@ Project description.
 
 To get a local copy up and running follow these simple steps.
 
-### Prerequisites
-
-After cloning the repository and setting up a virtual environment there is a file provided to install the necessary libraries.
-* pip
-  ```sh
-  pip install -r requirements.txt
-  ```
-
-* conda
-  ```sh
-  conda install --file requirements.txt
-  ```
-
 ### Installation
 
 1. Clone the repo
    ```sh
-   git clone https://github.com/kalzeo/Black-Goblin.git
+   >> git clone https://github.com/kalzeo/Black-Goblin.git
    ```
-2. Install packages
+2. Install packages through the terminal
    ```sh
-   pip install -r requirements.txt
+   >> pip install -r requirements.txt
+   ```
    
-   OR
-   
-   conda install --file requirements.txt
+3. Enable Cython Evaluation through the terminal
+   ```sh
+   >> enable_cyphon.bat
    ```
 
 
