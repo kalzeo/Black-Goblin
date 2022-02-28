@@ -15,7 +15,6 @@ os.environ["NUMEXPR_NUM_THREADS"] = "1"
 
 import sys
 
-#sys.path.insert(0, './yolov5')
 import yolov5
 
 import argparse
@@ -64,8 +63,8 @@ def detect(opt):
     print(f"YOLO Model: {opt.yolo_model}")
     print(f"SORT Model: {opt.config_deepsort}")
 
-    cfg.DEEPSORT.MAX_AGE = 50  # 10**5
-    cfg.DEEPSORT.MAX_IOU_DISTANCE = 0.85
+    cfg.DEEPSORT.MAX_AGE = 75
+    cfg.DEEPSORT.MAX_IOU_DISTANCE = 0.65
     cfg.DEEPSORT.N_INIT = 0
 
     deepsort = DeepSort(deep_sort_model,
@@ -263,7 +262,7 @@ if __name__ == '__main__':
     parser.add_argument('--deep_sort_model', type=str, default='osnet_x0_25')
     parser.add_argument('--source', type=str, help='source', required=True)  # path to video, 0 for webcam
     parser.add_argument('--output', type=str, default='inference/output', help='output folder')  # output folder
-    parser.add_argument('--imgsz', '--img', '--img-size', nargs='+', type=int, default=[288, 288], help='inference size h,w')
+    parser.add_argument('--imgsz', '--img', '--img-size', nargs='+', type=int, default=[96], help='inference size h,w')
     parser.add_argument('--conf-thres', type=float, default=0.2, help='object confidence threshold')
     parser.add_argument('--iou-thres', type=float, default=0.15, help='IOU threshold for NMS')
     parser.add_argument('--fourcc', type=str, default='mp4v', help='output video codec (verify ffmpeg support)')
