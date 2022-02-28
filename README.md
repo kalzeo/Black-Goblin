@@ -20,12 +20,7 @@
 *** for contributors-url, forks-url, etc. This is an optional, concise syntax you may use.
 *** https://www.markdownguide.org/basic-syntax/#reference-style-links
 -->
-[![Contributors][contributors-shield]][contributors-url]
-[![Forks][forks-shield]][forks-url]
-[![Stargazers][stars-shield]][stars-url]
-[![Issues][issues-shield]][issues-url]
-[![MIT License][license-shield]][license-url]
-[![LinkedIn][linkedin-shield]][linkedin-url]
+
 
 
 
@@ -37,19 +32,6 @@
   </a>
 
   <h3 align="center">Black Goblin</h3>
-
-  <p align="center">
-    project_description
-    <br />
-    <a href="https://github.com/kalzeo/Black-Goblin"><strong>Explore the docs »</strong></a>
-    <br />
-    <br />
-    <a href="https://github.com/kalzeo/Black-Goblin">View Demo</a>
-    ·
-    <a href="https://github.com/kalzeo/Black-Goblin/issues">Report Bug</a>
-    ·
-    <a href="https://github.com/kalzeo/Black-Goblin/issues">Request Feature</a>
-  </p>
 </p>
 
 
@@ -116,9 +98,16 @@ To get a local copy up and running follow these simple steps.
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
-
-_For more examples, please refer to the [Documentation](https://example.com)_
+Running the tracker to detect objects in videos
+   ```sh
+   # remember to customize the file before running
+   >> run.bat
+   
+   or
+   
+   # don't include --classes if you want to track everything
+   >> python track.py --project "ProjectName" --name "" --source "VideoPath" --classes 0
+   ```
 
 
 <!-- LICENSE -->
@@ -140,23 +129,4 @@ Project Link: [https://github.com/kalzeo/Black-Goblin](https://github.com/kalzeo
 <!-- ACKNOWLEDGEMENTS -->
 ## Acknowledgements
 
-* [Mike](https://github.com/mikel-brostrom) for supplying [Deep Sort](https://github.com/mikel-brostrom/Yolov5_DeepSort_Pytorch)
-
-
-
-
-
-<!-- MARKDOWN LINKS & IMAGES -->
-<!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://img.shields.io/github/contributors/kalzeo/repo.svg?style=for-the-badge
-[contributors-url]: https://github.com/kalzeo/Black-Goblin/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/kalzeo/repo.svg?style=for-the-badge
-[forks-url]: https://github.com/kalzeo/Black-Goblin/network/members
-[stars-shield]: https://img.shields.io/github/stars/kalzeo/repo.svg?style=for-the-badge
-[stars-url]: https://github.com/kalzeo/Black-Goblin/stargazers
-[issues-shield]: https://img.shields.io/github/issues/kalzeo/repo.svg?style=for-the-badge
-[issues-url]: https://github.com/kalzeo/Black-Goblin/issues
-[license-shield]: https://img.shields.io/github/license/kalzeo/repo.svg?style=for-the-badge
-[license-url]: https://github.com/kalzeo/Black-Goblin/blob/master/LICENSE.txt
-[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
-[linkedin-url]: https://linkedin.com/in/kalzeo
+* [Mike](https://github.com/mikel-brostrom) for providing [Deep Sort](https://github.com/mikel-brostrom/Yolov5_DeepSort_Pytorch)

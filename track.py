@@ -258,8 +258,8 @@ def detect(opt):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-    parser.add_argument('--yolo_model', nargs='+', type=str, default='yolov5m.pt', help='model.pt path(s)', required=True)
-    parser.add_argument('--deep_sort_model', type=str, default='osnet_x0_25')
+    parser.add_argument('--yolo_model', nargs='+', type=str, default='"yolov5l.pt"', help='model.pt path(s)')
+    parser.add_argument('--deep_sort_model', type=str, default='resnet18')
     parser.add_argument('--source', type=str, help='source', required=True)  # path to video, 0 for webcam
     parser.add_argument('--output', type=str, default='inference/output', help='output folder')  # output folder
     parser.add_argument('--imgsz', '--img', '--img-size', nargs='+', type=int, default=[96], help='inference size h,w')
