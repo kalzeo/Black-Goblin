@@ -1,0 +1,1 @@
+python track.py --project "./tests/SCENE_BadBlood" --name "SCENE_BadBlood_yolov5m" --source "./videos/SCENE_BadBlood.mp4" --deep_sort_model "densenet201" --yolo_model "yolov5s.pt" --classes 0

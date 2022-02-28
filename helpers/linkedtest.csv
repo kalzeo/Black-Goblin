@@ -1,0 +1,7 @@
+Object,ID,Timestamp_In,Timestamp_Out
+Person,1,00:00:00.083333,0:05
+Chair,1,00:00:00.250000,00:00:00.250000
+Orange,1,0:05,0:06
+Person,1,0:07,0:08
+Bowling Bowl,1,0:09,0:12
+Bowling Bowl,1,0:50,0:52
