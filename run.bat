@@ -6,6 +6,6 @@ set name="SCENE_BadBlood_yolov5m"     & :: The project name
 set src="./videos/SCENE_BadBlood.mp4" & :: Path to the video
 set ym="yolov5s.pt"                   & :: The YOLO model
 set ds="densenet201"                  & :: The Deep SORT model
-set classes=0 1 2 3                   & :: The class indexes for the model to identify (see 'Class Indexes.xlsx') seperated by spaces if classes > 1
+set classes=0 1 2 3                   & :: The class indexes for the model to identify (see 'Class Indexes.xlsx') seperated by spaces if number of classes > 1
 
 python track.py --project %proj% --name %name% --source %src% --deep_sort_model %ds% --yolo_model %ym% --classes %classes%
