@@ -258,7 +258,7 @@ def detect(opt):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-    parser.add_argument('--yolo_model', nargs='+', type=str, default='"yolov5l.pt"', help='model.pt path(s)')
+    parser.add_argument('--yolo_model', nargs='+', type=str, default='yolov5l.pt', help='model.pt path(s)')
     parser.add_argument('--deep_sort_model', type=str, default='resnet18')
     parser.add_argument('--source', type=str, help='source', required=True)  # path to video, 0 for webcam
     parser.add_argument('--output', type=str, default='inference/output', help='output folder')  # output folder
@@ -267,7 +267,7 @@ if __name__ == '__main__':
     parser.add_argument('--iou-thres', type=float, default=0.15, help='IOU threshold for NMS')
     parser.add_argument('--fourcc', type=str, default='mp4v', help='output video codec (verify ffmpeg support)')
     parser.add_argument('--device', default='cpu', help='cuda device, i.e. 0 or 0,1,2,3 or cpu')
-    parser.add_argument('--show-vid', default=True, action='store_true', help='display tracking video results')
+    parser.add_argument('--show-vid', default=False, action='store_true', help='display tracking video results')
     parser.add_argument('--save-vid', default=True, action='store_true', help='save video tracking results')
     parser.add_argument('--save-csv', default=True, action='store_true', help='save results to *.csv')
     # class 0 is person, 1 is bycicle, 2 is car... 79 is oven
