@@ -17,7 +17,6 @@ class LinkedList:
         node.next = self.head
         self.head = node
 
-    # Append to end
     def append(self, **kwargs):
         """
         Insert content to the end of the linked list
