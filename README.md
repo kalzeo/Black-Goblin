@@ -106,7 +106,9 @@ Running the tracker to detect objects in videos
    or
    
    # don't include --classes if you want to track everything
-   >> python track.py --project "ProjectDir" --name "ProjectName" --source "VideoPath" --classes 0
+   # class labels can be chained like so '--classes 0 1 2 ...' if you want to track multiple specific objects
+   # see 'Class Indexes.xlsx' for more class labels
+   >> python track.py --project "ProjectDirectory" --name "ProjectName" --source "VideoPath" --classes 0
    ```
 
 
