@@ -88,7 +88,7 @@ To get a local copy up and running follow these simple steps.
    >> pip install -r requirements.txt
    ```
    
-3. Enable Cython Evaluation through the terminal
+3. Enable Cython Evaluation through the terminal (Optional - provides faster evaluations)
    ```sh
    >> enable_cyphon.bat
    ```
