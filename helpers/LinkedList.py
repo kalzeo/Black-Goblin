@@ -40,18 +40,20 @@ class LinkedList:
 
     def ll2csv(self, df: pd.DataFrame, save_dir: Path):
         """
-        Put the contents of the linked list into a CSV file. The contents will be grouped accordingly to only
+        Store the contents of the linked list in a CSV file. The contents will be grouped accordingly to only
         display the timestamps of when an object comes in and out of frame.
         :param save_dir: The directory to where the CSV file will be saved
         :param df: An empty dataframe to store the contents of the linked list
         """
+        MAX_FRAMES_BEFORE_DISCARD = 3
+
         for c in self:
             temp = c
             frame, obj, obj_id, timestamp_in, timestamp_out = c.frame, c.obj, c.id, c.timestamp, c.timestamp
 
             last_seen = frame
             while temp is not None:
-                if c.obj == temp.obj and c.id == temp.id and temp.frame - last_seen <= 1:
+                if c.obj == temp.obj and c.id == temp.id and temp.frame - last_seen <= MAX_FRAMES_BEFORE_DISCARD:
                     timestamp_out = temp.timestamp
                     last_seen = temp.frame
                 temp = temp.next
