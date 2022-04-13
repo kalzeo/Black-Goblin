@@ -45,7 +45,7 @@ class LinkedList:
         :param save_dir: The directory to where the CSV file will be saved
         :param df: An empty dataframe to store the contents of the linked list
         """
-        MAX_FRAMES_BEFORE_DISCARD = 3
+        MAX_FRAMES_BEFORE_DISCARD = 1
 
         for c in self:
             temp = c
