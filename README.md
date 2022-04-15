@@ -79,18 +79,40 @@ To get a local copy up and running follow these simple steps.
 
 ### Installation
 
-1. Clone the repo
+1. Download & Install Git from [here](https://git-scm.com/downloads) and select your OS from the list.
+
+2. Download & Install Python 3.7.9 from [here](https://www.python.org/downloads/release/python-379/) and select your OS from the list.
+
+3. Download & Install Python pip [**SKIP IF INSTALLED**].
+   <br>
+   Pip should be installed by default but if it isn't then use the respective commands.
+   ```sh
+   Windows:
+   >> curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
+   >> python3.7 get-pip.py
+   
+   Linux / macOS:
+   >> sudo apt install python3-pip
+   ```
+   
+4. Clone the repo
    ```sh
    >> git clone https://github.com/kalzeo/Black-Goblin.git
    ```
-2. Install packages through the terminal
+   
+5. Install packages through the terminal
    ```sh
    >> pip install -r requirements.txt
    ```
    
-3. Enable Cython Evaluation through the terminal (Optional - provides faster evaluations)
+6. Enable Cython Evaluation through the terminal (Optional - provides faster evaluations)
    ```sh
-   >> enable_cyphon.bat
+   Windows:
+   >> win_enable_cyphon.bat
+   
+   Linux / macOS:
+   >> chmod +x unix_enable_cython.sh
+   >> sh unix_enable_cython.sh
    ```
 
 
@@ -98,18 +120,43 @@ To get a local copy up and running follow these simple steps.
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-Running the tracker to detect objects in videos
+Using the supplied .bat or .sh run files. Remember to edit the .bat or .sh file before running.
    ```sh
-   # remember to customize the file before running
-   >> run.bat
+   Windows:
+   >> win_run.bat
    
-   or
-   
-   # don't include --classes if you want to track everything
-   # class labels can be chained like so '--classes 0 1 2 ...' if you want to track multiple specific objects
-   # see 'Class Indexes.xlsx' for more class labels
-   >> python track.py --project "ProjectDirectory" --name "ProjectName" --source "VideoPath" --classes 0
+   Linux / macOS:
+   >> chmod +x unix_run.sh # ONLY REQUIRED ONCE TO MAKE THE FILE EXECUTABLE
+   >> sh unix_run.sh
    ```
+
+If you wish to write the script manually using terminal it can be done like so:
+```sh
+# If you want to track everything do not supply the --classes flag
+# Class labels can be chained like so '--classes 0 1 2 ...' for tracking specific objects. See 'Class Indexes.xlsx' for more class labels. 
+>> python3.7 track.py --project "ProjectDirectory" --name "ProjectName" --source "VideoPath" --classes 0
+```
+
+Specifying a specific YOLO model:
+```sh
+>> python3.7 track.py --project "ProjectDirectory" --name "ProjectName" --source "VideoPath" --classes 0 --yolo_model "yolov5s.pt"
+```
+
+Specifying a specific DeepSort model:
+```sh
+>> python3.7 track.py --project "ProjectDirectory" --name "ProjectName" --source "VideoPath" --classes 0 --yolo_model "yolov5s.pt" --deep_sort_model osnet_x0_5_market1501
+```
+
+<!-- DEFAULTS -->
+## Default YOLOv5 / DeepSort Models
+
+Default values for the project are outlined using a default flag in track.py from lines 259-287. This file can be found in the projects root directory.
+
+The default YOLOv5 model used is YOLOv5l. Typical examples that can be used are YOLOv5[s,n,m,l,x] but more examples can be found [here](https://github.com/ultralytics/yolov5#pretrained-checkpoints). 
+To default YOLO model can be changed in track.py (line 261) and will be automatically downloaded when the program runs for the first time with this new default.
+
+The default DeepSort model used is ResNet18. More examples can be found [here](https://kaiyangzhou.github.io/deep-person-reid/MODEL_ZOO). 
+To default DeepSort model can be changed in track.py (line 262) and will be automatically downloaded when the program runs for the first time with this new default if the model is available for use.
 
 
 <!-- LICENSE -->
@@ -125,10 +172,3 @@ Distributed under the MIT License. See `LICENSE` for more information.
 Kyle McPherson - [Email](mailto:k.mcpherson13@rgu.ac.uk)
 
 Project Link: [https://github.com/kalzeo/Black-Goblin](https://github.com/kalzeo/Black-Goblin)
-
-
-
-<!-- ACKNOWLEDGEMENTS -->
-## Acknowledgements
-
-* [Mike](https://github.com/mikel-brostrom) for providing [Deep Sort](https://github.com/mikel-brostrom/Yolov5_DeepSort_Pytorch)
