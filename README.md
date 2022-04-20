@@ -87,11 +87,11 @@ To get a local copy up and running follow these simple steps.
    <br>
    Pip should be installed by default but if it isn't then use the respective commands.
    ```sh
-   Windows:
+   Windows / macOS:
    >> curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
    >> python3.7 get-pip.py
    
-   Linux / macOS:
+   Linux:
    >> sudo apt install python3-pip
    ```
    
@@ -137,12 +137,12 @@ If you wish to write the script manually using terminal it can be done like so:
 >> python3.7 track.py --project "ProjectDirectory" --name "ProjectName" --source "VideoPath" --classes 0
 ```
 
-Specifying a specific YOLO model:
+Specifying a specific YOLO model using the --yolo_model flag:
 ```sh
 >> python3.7 track.py --project "ProjectDirectory" --name "ProjectName" --source "VideoPath" --classes 0 --yolo_model "yolov5s.pt"
 ```
 
-Specifying a specific DeepSort model:
+Specifying a specific DeepSort model using the --deep_sort_model flag:
 ```sh
 >> python3.7 track.py --project "ProjectDirectory" --name "ProjectName" --source "VideoPath" --classes 0 --yolo_model "yolov5s.pt" --deep_sort_model osnet_x0_5_market1501
 ```
