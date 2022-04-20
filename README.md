@@ -150,13 +150,13 @@ Specifying a specific DeepSort model using the --deep_sort_model flag:
 <!-- DEFAULTS -->
 ## Default YOLOv5 / DeepSort Models
 
-Default values for the project are outlined using a default flag in track.py from lines 259-287. This file can be found in the projects root directory.
+Default values for the project are set in track.py from lines 259-287. This file can be found in the projects root directory.
 
 The default YOLOv5 model used is YOLOv5l. Typical examples that can be used are YOLOv5[s,n,m,l,x] but more examples can be found [here](https://github.com/ultralytics/yolov5#pretrained-checkpoints). 
-To default YOLO model can be changed in track.py (line 261) and will be automatically downloaded when the program runs for the first time with this new default.
+The default YOLO model can be changed in track.py (line 261) and will be automatically downloaded when the program runs for the first time with this new default.
 
 The default DeepSort model used is ResNet18. More examples can be found [here](https://kaiyangzhou.github.io/deep-person-reid/MODEL_ZOO). 
-To default DeepSort model can be changed in track.py (line 262) and will be automatically downloaded when the program runs for the first time with this new default if the model is available for use.
+The default DeepSort model can be changed in track.py (line 262) and will be automatically downloaded when the program runs for the first time with this new default if the model is available for use.
 
 
 <!-- LICENSE -->
