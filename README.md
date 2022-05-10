@@ -103,6 +103,10 @@ To get a local copy up and running follow these simple steps.
 5. Install packages through the terminal
    ```sh
    >> pip install -r requirements.txt
+   
+      OR
+      
+   >> pip install --user -r requirements (use this if Errno 13 is thrown)
    ```
    
 6. Enable Cython Evaluation through the terminal (Optional - provides faster evaluations)
